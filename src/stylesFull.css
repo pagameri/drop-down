@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #eee;
+}
+
+header {
+  width: 100vw;
+  height: 70px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.menu-btn {
+  height: 50px;
+  padding: 20px;
+  background-color: inherit;
+  border-radius: 0.3rem;
+  line-height: 50%;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.menu-btn.active {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
+}
+
+.menu-btn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.6);
+}
+
+.dropdown-menu {
+  perspective: 1000px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes menu {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-90px);
+  }
+  80% {
+    transform: scale(1.05) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+.dropdown.visible > .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  animation: menu 300ms ease-in-out;
+}
+
+.dropdown-menu li {
+  background-color: rgba(0, 0, 0, 0.06);
+  list-style: none;
+  height: 60px;
+  line-height: 60px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-color: var(--bg-color);
+  opacity: 0.1;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom-right-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
